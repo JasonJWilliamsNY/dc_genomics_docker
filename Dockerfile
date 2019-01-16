@@ -123,22 +123,10 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 #
 #
-# Configure environment
-ENV DEBIAN_FRONTEND=noninteractive \
- LANG=en_US.UTF-8 \
- LANGUAGE=en_US.UTF-8 \
- LC_ALL=en_US.UTF-8 \
- LC_COLLATE=en_US.UTF-8 \
- LC_CTYPE=en_US.UTF-8 \
- LC_MESSAGES=en_US.UTF-8 \
- LC_MONETARY=en_US.UTF-8 \
- LC_NUMERIC=en_US.UTF-8 \
- LC_TIME=en_US.UTF-8
-
 # Expose port for RStudio Server 8787 and SSH port
 EXPOSE 8787
-EXPOSE 22
 #
 # Start the container - will create users in username.txt if they do
 # not already exist and start the hub.
-ENTRYPOINT ["/docker-persistant/initiate.sh"]
+
+CMD ["/docker-persistant/initiate.sh"]

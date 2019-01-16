@@ -86,4 +86,5 @@ rm /bin/sh
 ln -s /bin/bash /bin/sh
 # todo: figure out how to get the Jupyter terminal to load bash profile
 echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf
-rstudio-server start
+rstudio-server start --server-daemonize=0 --server-app-armor-enabled=0
+sleep infinity 
