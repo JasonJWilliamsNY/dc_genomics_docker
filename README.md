@@ -48,7 +48,7 @@ To run:
 2. Start the container with this command (remember to edit the location of
    `docker-persistant/`)
 
-        docker run -p 8000:8000 --name dc_genomics -d -v SOMEPATH/docker-persistant:/docker-persistant jasonjwilliamsny/dc_genomics
+        docker run -p 8787:8787 --name dc_genomics -d -v SOMEPATH/docker-persistant:/docker-persistant jasonjwilliamsny/dc_genomics
 
 3. Rstudio will be available at the ip address of the machine
 
