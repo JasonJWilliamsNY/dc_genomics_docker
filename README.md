@@ -19,7 +19,7 @@ To run:
    container for each user. The sample list has `dcuser` which will be assigned
    the password by the script 'data4Carp'
 
-   *tip*: You can edit the password in line 16 of `createusers.sh`
+   *tip*: You can edit the password in line 25 and 39 of `initiate.sh`
 
    Note: Your user will have a home directory at `/home/$user`
    This will be a symbolic link to a folder `docker-persistant/$user`
