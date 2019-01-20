@@ -115,6 +115,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export IDS_HOME="/irods/data.iplantc.org/iplant/home/edwins"
-alias ids_home="cd $IDS_HOME"
-export IDS_HOME="/irods/data.iplantc.org/iplant/home/williams"
