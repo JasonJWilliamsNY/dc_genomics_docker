@@ -32,9 +32,9 @@ To run:
 1. Place `docker-persistant/` in a suitable location on the
    machine where Docker is hosted. The `-v` option used at execution
    will bind this folder.
-2. Make sure `/docker-persistant/createusers.sh` is executable:
+2. Make sure `/docker-persistant/initiate.sh` is executable:
 
-        chmod +x SOMEPATH/docker-persistant/createusers.sh
+        chmod +x SOMEPATH/docker-persistant/initiate.sh
 
 
 ## Running the container
