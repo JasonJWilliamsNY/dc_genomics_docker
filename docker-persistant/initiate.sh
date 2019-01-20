@@ -1,6 +1,6 @@
 #!/bin/bash
 # Is anything with this many if statements going to be a good idea?
-# This script will create linux/Jupyterhub users from a list (usernames.txt)
+# This script will create linux users from a list (usernames.txt)
 # Multiple conditionals are writen so that users are only created when needed
 # and for the case where the hub needs to be resarted.
 
@@ -43,8 +43,8 @@ for user in $(cat /docker-persistant/usernames.txt)
           chown -R $user /home/$user
           echo "user $user added successfully!"
       fi
-  # Senario where user already exists in the container (i.e. restarting hub but
-  # not the container )
+  # Senario where user already exists in the container (i.e. restarting a
+  # service but not the container)
   else
       # Check to see if the symbolic link ~/$user exists and that its target
       # /docker-persistant exists. Create or use existing links and folders
@@ -84,7 +84,15 @@ for user in $(cat /docker-persistant/usernames.txt)
 # by deleting sh and using /bin/bash
 rm /bin/sh
 ln -s /bin/bash /bin/sh
-# todo: figure out how to get the Jupyter terminal to load bash profile
+# Add dcuser to the ssh list and resart the service
+mkdir /run/sshd
+echo "Port 22
+PermitRootLogin yes
+AllowUsers dcuser
+" > /etc/ssh/sshd_config
+service ssh --full-restart
+# Sart Rsudio server
 echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf
 rstudio-server start --server-daemonize=0 --server-app-armor-enabled=0
-sleep infinity 
+# keep this script running forever so the container does not exit
+sleep infinity

@@ -125,6 +125,7 @@ ENV LC_ALL en_US.UTF-8
 #
 # Expose port for RStudio Server 8787 and SSH port
 EXPOSE 8787
+EXPOSE 22
 #
 # Start the container - will create users in username.txt if they do
 # not already exist and start the hub.

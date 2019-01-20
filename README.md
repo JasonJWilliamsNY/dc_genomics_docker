@@ -6,7 +6,7 @@ To run:
 # Draft instructions
 
 - Docker image: https://hub.docker.com/r/jasonjwilliamsny/dc_genomics
-- Docker pull command: `docker pull jasonjwilliamsny/dc_genomics:dev_1.0`
+- Docker pull command: `docker pull jasonjwilliamsny/dc_genomics:dev_1.1`
 
 ## Setup config files
 
@@ -20,8 +20,6 @@ To run:
    the password by the script 'data4Carp'
 
    *tip*: You can edit the password in line 16 of `createusers.sh`
-   `password=$(openssl passwd -1 -salt xyz $base'.123')` currently appends `.123`
-    to the end of the username (which is also = to $base in this line)
 
    Note: Your user will have a home directory at `/home/$user`
    This will be a symbolic link to a folder `docker-persistant/$user`
@@ -43,23 +41,23 @@ To run:
 
 1. Pull the image from dockerhub
 
-        docker pull jasonjwilliamsny/dc_genomics:dev_1.0
+        docker pull jasonjwilliamsny/dc_genomics:dev_1.1
 
 2. Start the container with this command (remember to edit the location of
    `docker-persistant/`)
 
-        docker run -p 8787:8787 --name dc_genomics -d -v SOMEPATH/docker-persistant:/docker-persistant jasonjwilliamsny/dc_genomics:dev_1.0
+        docker run -p 8787:8787 -p 22:22 --name dc_genomics -d -v SOMEPATH/docker-persistant:/docker-persistant jasonjwilliamsny/dc_genomics:dev_1.1
 
 3. Rstudio will be available at the ip address of the machine
 
         127.0.0.1:8787
         localhost:8787
 
+4. SSH will be accessible at the ip address of the machine
+
+        127.0.0.1:22
+        localhost:22
+
     Login
          dcuser
          data4Carp
-
-Things to do
-
- - Figure out SSH for terminal access
- - Setup directory structure and test data
