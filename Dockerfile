@@ -84,33 +84,33 @@ RUN  apt-key adv --keyserver keyserver.ubuntu.com\
 RUN apt-get update\
  && apt-get upgrade -y -q\
  && apt-get install -y --no-install-recommends\
- r-recommended\
- r-base\
- r-base-dev
+ r-recommended=3.5.2-1bionic\
+ r-base=3.5.2-1bionic\
+ r-base-dev=3.5.2-1bionic\
+ curl\
+ libgit2-dev
 #
 #
 # Install R packages
 RUN R -e "install.packages('devtools')"
-RUN R -e "install.packages('BiocManager')"
-RUN R -e "install.packages('XML')"
-RUN R -e "install.packages('tidyverse')"
-RUN R -e "install.packages('ggplot2')"
-RUN R -e "install.packages('knitr')"
-RUN R -e "install.packages('rmarkdown')"
-RUN R -e "install.packages('packrat')"
+RUN R -e "devtools::install_version('BiocManager', version='1.30.4', repos='http://cran.us.r-project.org')"
+RUN R -e "devtools::install_version('XML', version='3.98-1.16', repos='http://cran.us.r-project.org')"
+RUN R -e "devtools::install_version('tidyverse', version='1.2.1', repos='http://cran.us.r-project.org')"
+RUN R -e "devtools::install_version('ggplot2', version='3.1.0', repos='http://cran.us.r-project.org')"
+RUN R -e "devtools::install_version('knitr', version='1.21', repos='http://cran.us.r-project.org')"
+RUN R -e "devtools::install_version('rmarkdown', version='1.11', repos='http://cran.us.r-project.org')"
+RUN R -e "devtools::install_version('packrat', version='0.5.0', repos='http://cran.us.r-project.org')"
 #
 #
 # Install RStudio Server
-ADD https://s3.amazonaws.com/rstudio-server/current.ver /tmp/ver
 ENV CRAN_URL https://cloud.r-project.org/
 RUN apt-get update\
  && apt-get upgrade -y -q\
  && apt-get install -y --no-install-recommends\
- gdebi\
- curl
+ gdebi
 RUN set -e\
  && ln -s /dev/stdout /var/log/syslog\
- && curl -S -o /tmp/rstudio.deb http://download2.rstudio.org/rstudio-server-$(cat /tmp/ver)-amd64.deb\
+ && curl -S -o /tmp/rstudio.deb https://download2.rstudio.org/rstudio-server-1.1.463-amd64.deb\
  && gdebi -n /tmp/rstudio.deb\
  && rm -rf /tmp/rstudio.deb /tmp/ver
 #
@@ -127,7 +127,7 @@ ENV LC_ALL en_US.UTF-8
 EXPOSE 8787
 EXPOSE 22
 #
+#
 # Start the container - will create users in username.txt if they do
-# not already exist and start the hub.
-
+# not already exist and start services.
 CMD ["/docker-persistant/initiate.sh"]

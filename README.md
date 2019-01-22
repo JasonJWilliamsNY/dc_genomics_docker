@@ -6,7 +6,7 @@ To run:
 # Draft instructions
 
 - Docker image: https://hub.docker.com/r/jasonjwilliamsny/dc_genomics
-- Docker pull command: `docker pull jasonjwilliamsny/dc_genomics:dev_1.1`
+- Docker pull command: `docker pull jasonjwilliamsny/dc_genomics:dev_1.6`
 
 ## Setup config files
 
@@ -41,12 +41,12 @@ To run:
 
 1. Pull the image from dockerhub
 
-        docker pull jasonjwilliamsny/dc_genomics:dev_1.1
+        docker pull jasonjwilliamsny/dc_genomics:dev_1.6
 
 2. Start the container with this command (remember to edit the location of
    `docker-persistant/`)
 
-        docker run -p 8787:8787 -p 22:22 --name dc_genomics -d -v SOMEPATH/docker-persistant:/docker-persistant jasonjwilliamsny/dc_genomics:dev_1.1
+        docker run -p 8787:8787 -p 22:22 --name dc_genomics -d -v SOMEPATH/docker-persistant:/docker-persistant jasonjwilliamsny/dc_genomics:dev_1.6
 
 3. Rstudio will be available at the ip address of the machine
 
