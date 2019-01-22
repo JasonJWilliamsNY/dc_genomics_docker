@@ -1,16 +1,14 @@
-# dc_genomics_docker
+# Genomics Data Carpentry Dockerfile
 Container development for Data Carpentry Genomics lessons
 
-To run:
-
-# Draft instructions
+## Draft instructions
 
 - Docker image: https://hub.docker.com/r/jasonjwilliamsny/dc_genomics
 - Docker pull command: `docker pull jasonjwilliamsny/dc_genomics:dev_1.6`
 
 ## Setup config files
 
-### Enter usernames for your hub users
+### Enter usernames for your image users
 
 1. Clone this repo and place `docker-persistant/` in
    a convenient location on your server. In `docker-persistant/`
@@ -59,5 +57,7 @@ To run:
         localhost:22
 
     Login
+
+
          dcuser
          data4Carp
