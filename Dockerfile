@@ -110,7 +110,7 @@ RUN apt-get update\
  gdebi
 RUN set -e\
  && ln -s /dev/stdout /var/log/syslog\
- && curl -S -o /tmp/rstudio.deb https://download2.rstudio.org/rstudio-server-1.1.463-amd64.deb\
+ && curl -S -o /tmp/rstudio.deb https://download2.rstudio.org/server/trusty/amd64/rstudio-server-1.2.1335-amd64.deb\
  && gdebi -n /tmp/rstudio.deb\
  && rm -rf /tmp/rstudio.deb /tmp/ver
 #
