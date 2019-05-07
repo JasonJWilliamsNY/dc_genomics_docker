@@ -43,7 +43,19 @@ RUN apt update -y && apt upgrade -y && apt-get install -y --fix-missing\
  libxrender1\
  openssl\
  npm nodejs\
- nodejs
+ nodejs\
+ libncurses5-dev\
+ libncursesw5-dev\
+ ncurses-term
+#
+#
+# Instal latex
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update -q && apt-get install -qy \
+    texlive-full \
+    python-pygments gnuplot \
+    make git \
+&& rm -rf /var/lib/apt/lists/*
 #
 #
 # Install Conda
