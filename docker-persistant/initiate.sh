@@ -80,10 +80,11 @@ for user in $(cat /docker-persistant/usernames.txt)
   fi
   done
 
-# adjust which shell is used so that jupyterhub uses bash in the meanest way
-# by deleting sh and using /bin/bash
+#configure shell
 rm /bin/sh
 ln -s /bin/bash /bin/sh
+echo "SHELL=/bin/bash" >> /etc/environment
+
 # Add dcuser to the ssh list and resart the service
 mkdir /run/sshd
 echo "Port 22
